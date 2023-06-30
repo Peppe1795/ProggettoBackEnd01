@@ -130,6 +130,9 @@ public class MainProggetto {
 						;
 					}
 					immagine.show();
+
+				default:
+					System.out.println("Tipo non identidicato");
 				}
 			}
 		}
