@@ -82,24 +82,50 @@ public class MainProggetto {
 			if (seleziona >= 1 && seleziona <= 5) {
 				Multimedia listItem = arrayContenuti[seleziona - 1];
 
-				if (listItem instanceof Riproduci) {
-					Riproduci riproducibile = (Riproduci) listItem;
+				switch (listItem.getClass().getSimpleName()) {
+				case "Audio":
+					Audio tracciaAudio = (Audio) listItem;
 					System.out.println("per regolare il volume digita 1 per alzarlo oppure 2 per abbasarlo");
 					int regola = input.nextInt();
+					;
 					if (regola == 1) {
-						riproducibile.alzaVolume();
+						tracciaAudio.alzaVolume();
 					} else if (regola == 2) {
-						riproducibile.abbassaVolume();
+						tracciaAudio.abbassaVolume();
 					}
-					riproducibile.play();
-				} else if (listItem instanceof Immagini) {
+					tracciaAudio.play();
+					break;
+
+				case "Video":
+					Video contenutoVideo = (Video) listItem;
+					System.out.println("per regolare il volume digita 1 per alzarlo oppure 2 per abbasarlo");
+					int regola1 = input.nextInt();
+					if (regola1 == 1) {
+						contenutoVideo.alzaVolume();
+					} else if (regola1 == 2) {
+						contenutoVideo.abbassaVolume();
+					}
+					System.out.println("per regolare la luminosità digita 1 per alzarla oppure 2 per abbasarla");
+					int regola4 = input.nextInt();
+					input.nextLine();
+					if (regola4 == 1) {
+						contenutoVideo.aumentaLuminosita();
+						;
+					} else if (regola4 == 2) {
+						contenutoVideo.abbassaLuminosita();
+						;
+					}
+					contenutoVideo.play();
+					break;
+
+				case "Immagini":
 					Immagini immagine = (Immagini) listItem;
 					System.out.println("per regolare la luminosità digita 1 per alzarla oppure 2 per abbasarla");
-					int regola = input.nextInt();
-					if (regola == 1) {
+					int regola2 = input.nextInt();
+					if (regola2 == 1) {
 						immagine.aumentaLuminosita();
 						;
-					} else if (regola == 2) {
+					} else if (regola2 == 2) {
 						immagine.abbassaLuminosita();
 						;
 					}
