@@ -9,7 +9,7 @@ public class MainProggetto {
 		System.out.println("****** Puoi Registrare 5 elementi tra Audio, Video o Immagini ******");
 		Multimedia[] arrayContenuti = new Multimedia[5];
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < arrayContenuti.length; i++) {
 			System.out.println("Inserisci il titolo dell'elemento");
 			String titolo1 = input.nextLine();
 			System.out.println("Definisci il tipo di contenuto multimediale");
