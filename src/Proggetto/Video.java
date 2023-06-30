@@ -50,6 +50,22 @@ public class Video extends Multimedia implements Riproduci, Luminosita {
 		this.durata = durata;
 	}
 
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int vol) {
+		this.volume = vol;
+	}
+
+	public int getluminosita() {
+		return luminosita;
+	}
+
+	public void setluminosita(int lum) {
+		this.luminosita = lum;
+	}
+
 	@Override
 	public void aumentaLuminosita() {
 		if (luminosita == 10) {

@@ -9,7 +9,7 @@ public class MainProggetto {
 		System.out.println("****** Puoi Registrare 5 elementi tra Audio, Video o Immagini ******");
 		Multimedia[] arrayContenuti = new Multimedia[5];
 
-		for (int i = 0; i <= 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println("Inserisci il titolo dell'elemento");
 			String titolo1 = input.nextLine();
 			System.out.println("Definisci il tipo di contenuto multimediale");
@@ -62,30 +62,62 @@ public class MainProggetto {
 					arrayContenuti[i] = new Immagini(titolo1, luminosita2);
 				}
 				break;
+
+			default:
+				System.out.println("Attenzione numero riferito al tipo non valido");
+
 			}
 
 		}
 
-//
-//		System.out.println("Inserisci titolo traccia");
-//		String traccia1 = input.nextLine();
-//		System.out.println("Inserisci durata traccia");
-//		int durata1 = input.nextInt();
-//		Audio nuova = new Audio(traccia1, durata1);
-//		input.nextLine();
-//		nuova.alzaVolume();
-//		nuova.play();
-//
-//		System.out.println("--------");
-//		System.out.println("Inserisci titolo Video");
-//		String video1 = input.nextLine();
-//		System.out.println("Inserisci durata Video");
-//		int durataVideo1 = input.nextInt();
-//		Video videoNuovo = new Video(video1, durataVideo1);
-//		videoNuovo.alzaVolume();
-//		videoNuovo.aumentaLuminosita();
-//		videoNuovo.play();
-//		input.close();
+		stampaLista(arrayContenuti);
+
+		int seleziona = -1;
+		while (seleziona != 0) {
+			System.out
+					.print("Seleziona quale elemento della lista vuoi eseguire (1-5) oppure inserisci 0 per uscire: ");
+			seleziona = input.nextInt();
+			input.nextLine();
+
+			if (seleziona >= 1 && seleziona <= 5) {
+				Multimedia listItem = arrayContenuti[seleziona - 1];
+
+				if (listItem instanceof Riproduci) {
+					Riproduci riproducibile = (Riproduci) listItem;
+					System.out.println("per regolare il volume digita 1 per alzarlo oppure 2 per abbasarlo");
+					int regola = input.nextInt();
+					if (regola == 1) {
+						riproducibile.alzaVolume();
+					} else if (regola == 2) {
+						riproducibile.abbassaVolume();
+					}
+					riproducibile.play();
+				} else if (listItem instanceof Immagini) {
+					Immagini immagine = (Immagini) listItem;
+					System.out.println("per regolare la luminosità digita 1 per alzarla oppure 2 per abbasarla");
+					int regola = input.nextInt();
+					if (regola == 1) {
+						immagine.aumentaLuminosita();
+						;
+					} else if (regola == 2) {
+						immagine.abbassaLuminosita();
+						;
+					}
+					immagine.show();
+				}
+			}
+		}
+		System.out.println("Sei uscito correttamente dal programma");
+		input.close();
+	}
+
+	public static void stampaLista(Multimedia[] list) {
+		System.out.println("Elementi inseriti:");
+		for (int i = 0; i < list.length; i++) {
+			if (list[i] != null) {
+				System.out.println((i + 1) + ". " + list[i].titolo);
+			}
+		}
 	}
 
 }

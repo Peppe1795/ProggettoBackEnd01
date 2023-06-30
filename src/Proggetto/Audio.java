@@ -46,4 +46,11 @@ public class Audio extends Multimedia implements Riproduci {
 		this.durata = durata;
 	}
 
+	public int getVolume() {
+		return volume;
+	}
+
+	public void setVolume(int vol) {
+		this.volume = vol;
+	}
 }

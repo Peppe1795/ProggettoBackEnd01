@@ -8,6 +8,14 @@ public class Immagini extends Multimedia implements Luminosita {
 		this.luminosita = lum;
 	}
 
+	public int getluminosita() {
+		return luminosita;
+	}
+
+	public void setluminosita(int lum) {
+		this.luminosita = lum;
+	}
+
 	@Override
 	public void aumentaLuminosita() {
 		if (luminosita == 10) {
@@ -26,5 +34,10 @@ public class Immagini extends Multimedia implements Luminosita {
 			luminosita--;
 		}
 
+	}
+
+	public void show() {
+		String stampaLuminosita = "*".repeat(luminosita);
+		System.out.println(titolo + stampaLuminosita);
 	}
 }
